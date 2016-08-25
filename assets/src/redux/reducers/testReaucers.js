@@ -5,7 +5,7 @@
  * 创建时间: 2016/8/25
  * 变更记录:
  */
-import * as ActionsType from '../utils/actionsTypes';
+import * as ActionsType from '../utils/actionTypes';
 import HttpClient from '../utils/httpClient';
 
 /*
