@@ -3,13 +3,13 @@ React is a Javascript library for building user interfaces.
 
 Install and Run
 ----------------
-**安装：**
+**Install：**
 npm install(package.json依赖)
 
-**启动：**
-分别执行 npm run start-dev 和 npm run watch-client
+**Run：**
+执行 npm run start-dev、npm run watch-client
 或手动双击执行 dev
 
-**访问：**
+**Access：**
 http://localhost:9099
 
