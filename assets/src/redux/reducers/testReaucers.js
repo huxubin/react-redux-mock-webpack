@@ -13,8 +13,15 @@ import HttpClient from '../utils/httpClient';
  * */
 export function testStore(state = [], action) {
     switch (action.type) {
+
         case ActionsType.GET_TEST_DATA:
             return action.store;
+
+        // Object.assign() 新建一个副本
+        // 第一个参数设置为空，否则它会改变第一个参数的值
+        // return Object.assign({},{data:data});
+
+        // default(未知action)时，返回state(旧的数据)
         default:
             return state;
     }

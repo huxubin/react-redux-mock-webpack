@@ -12,6 +12,12 @@ import * as testService from '../../../../service/testService.js';
 export function testAction(data) {
     return (dispatch) => {
         testService.getTestData(data).then((res)=>{
+
+            // action获取数据,是store的唯一数据来源
+            // 通过dispatch将action传给store
+            // 约定：action中要使用type字段描述要执行的动作
+            // 尽量减少在action中传递的数据
+
             dispatch({
                 type: Types.GET_TEST_DATA,
                 store: res.data
