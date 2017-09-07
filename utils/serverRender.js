@@ -14,5 +14,6 @@ module.exports = function (componentClass, state) {
     }
     var store = createStore(rootReducer, state);
     var component = React.createElement(componentClass);
+
     return ReactDOMServer.renderToString(<Provider store={store}>{component}</Provider>);
 }

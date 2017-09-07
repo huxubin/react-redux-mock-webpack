@@ -1,3 +1,10 @@
+/**
+ * 文件说明: gulpfile
+ * 详细描述:
+ * 创建者: huxb
+ * 创建时间: 2016/8/19
+ * 变更记录:
+ */
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var gutil = require('gulp-util');
@@ -12,9 +19,10 @@ var libjs = [
 	'<script src="http://cdn.staticfile.org/react/0.14.3/react.min.js"></script>',
 	'<script src="http://cdn.staticfile.org/react/0.14.3/react-dom.min.js"></script>'
 ];
-//清除数据
-gulp.task('clean', function () {
-	return gulp.src(['assets/dist/*', 'assets/assets-map.json'], {read: false})
+
+// 清除数据
+gulp.task('clean',function (){
+	return gulp.src(['assets/dist/*', 'assets/assets-map.json'],{read: false})
 		.pipe(clean())
 });
 
@@ -29,7 +37,7 @@ gulp.task('default', function () {
 
 	var entryFiles = glob.sync('assets/src/**/*.entry.js');
 
-	for (var i = 0; i < entryFiles.length; i++) {
+	for(var i = 0; i < entryFiles.length; i++){
 		var filePath = entryFiles[i];
 		var key = filePath.substring(filePath.lastIndexOf(path.sep) + 1, filePath.lastIndexOf('.'));
 		entries[key] = path.join(__dirname, filePath);
@@ -40,7 +48,7 @@ gulp.task('default', function () {
 
 	config.plugins = config.plugins || [];
 
-	for (var i in entries) {
+	for(var i in entries){
 		//TODO 读取html,进行修改
 		var relativePath = path.relative(__dirname, entries[i]);
 		var htmlFilename = (relativePath + '.html').replace('.entry.js', '');

@@ -1,7 +1,7 @@
 /**
- * 文件说明: 测试
+ * 文件说明: 测试jsx
  * 详细描述:
- * 创建者:   hxb
+ * 创建者: hxb
  * 创建时间: 2016/8/25
  * 变更记录:
  */
@@ -18,14 +18,17 @@ class Test extends React.Component {
         this.actions = bindActionCreators(Object.assign({},testAction), props.dispatch);
     }
 
-    render () {
-        console.log(this.props.testStore);
+    render(){
         return (
-            <div>Hello world</div>
+            <div>
+                <span>
+                    hello world
+                </span>
+            </div>
         );
     }
 
-    componentDidMount() {
+    componentDidMount(){
         this.actions.testAction();
     }
 }

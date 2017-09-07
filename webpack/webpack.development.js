@@ -1,35 +1,39 @@
+/**
+ * 文件说明: webpack.dev
+ * 详细描述:
+ * 创建者: huxb
+ * 创建时间: 2016/8/19
+ * 变更记录:
+ */
 require('babel-core/register');
-
 var webpack = require('webpack');
 var path = require('path');
-var fs = require('fs');
+var fs = require('fs'); // 存放内存
 var url = require('url');
-var assetsPath = path.resolve(__dirname, '../assets/dist');
+
+var assetsPath = path.resolve(__dirname,'../assets/dist');
+
 var ForceCaseSensitivityPlugin = require('force-case-sensitivity-webpack-plugin');
 var host = (process.env.HOST || 'localhost');
 var port;
-if (host == 'localhost') {
+if(host == 'localhost'){
     port = parseInt(process.env.PORT) + 1 || 3003;
-} else {
+}else{
     port = 80;
 }
-var publicPath = url.format({
-    hostname: host,
-    port: port,
-    pathname: (process.env.PUBLISH_PATH || '') + '/'
-});
-var WEBSITE_HOST = process.env.WEBSITE_HOST || 'stg2.v5time.net';
+
+var WEBSITE_HOST = process.env.WEBSITE_HOST || '';
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
-var babelrc = fs.readFileSync(path.resolve(__dirname, '../.babelrc'));
+var babelrc = fs.readFileSync(path.resolve(__dirname,'../.babelrc'));
 var babelrcObject = {};
 
 try {
     babelrcObject = JSON.parse(babelrc);
 } catch (err) {
-    console.error('==>     ERROR: Error parsing your .babelrc.');
+    console.error('==>ERROR: Error parsing your .babelrc.');
     console.error(err);
 }
 
@@ -77,7 +81,6 @@ reactTransform[1].transforms.push({
     locals: ['module']
 });
 
-
 var config = {
     debug: true,
     devtool: 'eval-source-map',
@@ -92,7 +95,7 @@ var config = {
         path: assetsPath,
         filename: '[name].js',
         chunkFilename: '[name]-[chunkhash].js',
-        publicPath: publicPath
+        publicPath: 'http://'+host+':'+port+'/'
     },
     module: {
         loaders: [{

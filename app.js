@@ -49,7 +49,7 @@ if (app.get('debug')) {
         pathRewrite: proxyConfig.pathRewrite
     };
 
-    if (config.NODE_ENV_MOCK) {
+    if(config.NODE_ENV_MOCK){
         // 开启mock数据
         app.use(require('./middleware/mockMiddleware'));
     }

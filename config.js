@@ -1,7 +1,7 @@
 /**
  * 文件说明: 配置文件
  * 详细描述:
- * 创建者: 胡许彬
+ * 创建者: huxb
  * 创建时间: 2016/8/19
  * 变更记录:
  */
@@ -10,7 +10,7 @@ module.exports = {
     API_PROXY_CONFIG: {
         DEBUG: true,
         path: '/tf',
-        host: 'http://'+'dev1.v5time.net',
+        host: 'http://'+WEBSITE_HOST,
         changeOrigin: true,
         websockets: false,
         // 本地存储键值
