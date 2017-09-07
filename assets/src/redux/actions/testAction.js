@@ -1,7 +1,7 @@
 /**
  * 文件说明: 测试Actions
  * 详细描述:
- * 创建者:   hxb
+ * 创建者:   huxb
  * 创建时间: 2016/8/25
  * 变更记录:
  */
@@ -12,7 +12,6 @@ import * as testService from '../../../../service/testService.js';
 export function testAction(data) {
     return (dispatch) => {
         testService.getTestData(data).then((res)=>{
-
             // action获取数据,是store的唯一数据来源
             // 通过dispatch将action传给store
             // 约定：action中要使用type字段描述要执行的动作

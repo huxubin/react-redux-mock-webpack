@@ -11,31 +11,23 @@ module.exports = {
         DEBUG: true,
         path: '/tf',
         host: 'http://'+WEBSITE_HOST,
-        changeOrigin: true,
-        websockets: false,
-        // 本地存储键值
-        STORAGE_KEY: {
-            TOKEN: 'tf-token',
-            UID: 'tf-uid'
-        }
+        changeOrigin: true
     },
-    //服务端接口服务器配置
+    // 服务端接口服务器配置
     API_SERVER: {
         host: 'http://'+ WEBSITE_HOST,
         path: '/tf'
     },
 
-    //默认TDK
+    // 默认TDK
     TDK: {
-        title: '照片书',
-        description: '',
-        keywords: ''
+        title: '云办公'
     },
 
     // MOCK开启
-    NODE_ENV_MOCK: true,
+    NODE_ENV_MOCK:true,
 
-    // resetCss 标签和地址
+    // reset css
     RESE_CSS_URL:'<link href="//cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">'
 
 };

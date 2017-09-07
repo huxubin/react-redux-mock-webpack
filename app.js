@@ -21,8 +21,6 @@ app.locals.body = '';
 
 //设置默认的TDK
 app.locals.title = config.TDK.title;
-app.locals.description = config.TDK.description;
-app.locals.keywords = config.TDK.keywords;
 
 // 全局常量
 app.locals.RESE_CSS_URL = config.RESE_CSS_URL;
@@ -55,7 +53,7 @@ if (app.get('debug')) {
     }
 
     // 创建代理中间件
-    var proxy = require('http-proxy-middleware')(context, options);
+    var proxy = require('http-proxy-middleware')(context,options);
     app.use(proxy);
 }
 
@@ -82,8 +80,6 @@ app.use((req, res, next) => {
     next(err);
 });
 
-// 异常处理
-
 // 开发环境，500错误处理和错误堆栈跟踪
 if (app.get('env') === 'development') {
     app.use((err, req, res, next) => {
@@ -101,7 +97,7 @@ app.use((err, req, res, next) => {
 let PORT = parseInt(process.env.PORT || 9099);
 try {
     app.listen(PORT, () => {
-        console.log('启动服务. 端口号:', PORT);
+        console.log('启动服务. 端口号:',PORT);
     });
 }catch(err){
     console.log('启动错误：',err);

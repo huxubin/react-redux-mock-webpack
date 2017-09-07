@@ -14,7 +14,7 @@ import HttpClient from '../assets/src/redux/utils/httpClient';
 export function getTestData(data) {
     let defer = Q.defer();
     HttpClient.post('/contact/list',data)
-        .then((res) => {
+        .then((res) =>{
             defer.resolve(res);
         }, (err)=> {
             defer.reject(err);

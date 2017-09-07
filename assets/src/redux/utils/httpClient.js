@@ -1,7 +1,7 @@
 /**
  * 文件说明:httpClient
  * 详细描述:接口请求客户端
- * 创建者: hxb
+ * 创建者: huxb
  * 创建时间: 2016/8/25
  * 变更记录:
  */
@@ -21,9 +21,9 @@ const serverRequest = (config = {}) => {
     config.headers = config.headers ? config.headers : {};
 
     // 设置Content-Type
-    if (!config.upload) {
+    if(!config.upload){
         if(config.headers.type !== 'form'){
-            Object.assign(config.headers, {
+            Object.assign(config.headers,{
                 'Content-Type': 'application/json'
             });
         }
@@ -32,11 +32,9 @@ const serverRequest = (config = {}) => {
     // 如果为服务端请求,构造请求完整路径,防止请求默认的80端口
     const env = process.env.NODE_ENV || 'development';
     let BASE_URL;
-    if (env == 'development') {
-        // 开发环境,使用正向代理
+    if (env == 'development'){ // 开发环境,使用正向代理
         BASE_URL = !process.browser ? ('http://127.0.0.1:' + (process.env.PORT || 3030)) : '';
-    }else {
-        // 非开发环境,使用
+    }else { // 非开发环境
         BASE_URL = process.env.API_HOST || '';
     }
     let defer = Q.defer();
@@ -51,7 +49,7 @@ const serverRequest = (config = {}) => {
 
     req.set(config.headers || {});
     req.end((error, response) => {
-        if (error) {
+        if(error){
             defer.reject({code: response&&response.statusCode,data:response&&response.body});
         }
         defer.resolve(response && response.body);
@@ -72,10 +70,9 @@ function http(option = {}) {
         }
     }
 
-    while (chain.length) {
+    while(chain.length){
         let thenFn = chain.shift();
         let rejectFn = chain.shift();
-
         promise = promise.then(thenFn, rejectFn);
     }
     return promise;

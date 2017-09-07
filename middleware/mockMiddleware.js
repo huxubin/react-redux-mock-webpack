@@ -1,7 +1,7 @@
 /**
- * 文件说明: mock数据
+ * 文件说明: mock data
  * 详细描述:
- * 创建者  : hxb
+ * 创建者  : huxb
  * 创建时间: 2016/8/25
  * 变更记录:
  */
@@ -18,11 +18,11 @@ router.post(/contact\/list/, (req, res, next) => {
         'data': {
             'datas': [{
                 'id': 1,
-                'name': 'hxb',
+                'name': 'huxb',
                 'bookcover': 'http://img1.timeface.cn/avator/7fdd0a5b1fc2856414f796a8c9f72ee0.jpg'
             },{
                 'id': 2,
-                'name': 'hp',
+                'name': 'hep',
                 'bookcover': 'http://img1.timeface.cn/avator/7fdd0a5b1fc2856414f796a8c9f72ee0.jpg'
             }]
         }

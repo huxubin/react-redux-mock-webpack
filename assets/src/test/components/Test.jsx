@@ -1,7 +1,7 @@
 /**
  * 文件说明: 测试jsx
  * 详细描述:
- * 创建者: hxb
+ * 创建者: huxb
  * 创建时间: 2016/8/25
  * 变更记录:
  */
@@ -19,17 +19,24 @@ class Test extends React.Component {
     }
 
     render(){
+        console.log(this.props.testStore,'11111111111111');
         return (
             <div>
-                <span>
-                    hello world
-                </span>
+                {this.getTestData()}
             </div>
         );
     }
 
     componentDidMount(){
         this.actions.testAction();
+    }
+
+    getTestData(){
+        let testStore = this.props.testStore||{};
+        let testData = testStore.datas||[];
+        return testData.map(function(item,index){
+            return <img key={index} src={item.bookcover} style={{'width':'200px','marginLeft':'20px'}}/>
+        });
     }
 }
 
