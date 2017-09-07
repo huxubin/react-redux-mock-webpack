@@ -29,7 +29,6 @@ const serverRequest = (config = {}) => {
         }
     }
 
-
     // 如果为服务端请求,构造请求完整路径,防止请求默认的80端口
     const env = process.env.NODE_ENV || 'development';
     let BASE_URL;

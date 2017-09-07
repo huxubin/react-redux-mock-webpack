@@ -9,21 +9,19 @@ var express = require('express');
 var router = express.Router();
 import Mock from 'mockjs';
 
-router.post(/contact\/list/, (req, res, next) => {
+router.post(/contact\/list/,(req,res,next) => {
     "use strict";
-
-    // 开启Mock
     const data = Mock.mock({
         'code': 0,
         'data': {
             'datas': [{
-                'id': 1,
-                'name': 'huxb',
+                'id':1,
+                'name':'huxb',
                 'bookcover': 'http://img1.timeface.cn/avator/7fdd0a5b1fc2856414f796a8c9f72ee0.jpg'
             },{
-                'id': 2,
-                'name': 'hep',
-                'bookcover': 'http://img1.timeface.cn/avator/7fdd0a5b1fc2856414f796a8c9f72ee0.jpg'
+                'id':2,
+                'name':'hep',
+                'bookcover':'http://img1.timeface.cn/avator/7fdd0a5b1fc2856414f796a8c9f72ee0.jpg'
             }]
         }
     });

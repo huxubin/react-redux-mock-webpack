@@ -1,16 +1,22 @@
+/**
+ * 文件说明: webpack.pro
+ * 详细描述:
+ * 创建者: huxb
+ * 创建时间: 2016/8/19
+ * 变更记录:
+ */
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanPlugin = require('clean-webpack-plugin');
 var ForceCaseSensitivityPlugin = require('force-case-sensitivity-webpack-plugin');
 var assetsPath = path.resolve(__dirname, '../assets/dist');
-// https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
-var WEBSITE_HOST = 'notebook.timeface.cn';
+var WEBSITE_HOST = '';
 try{
     var appConfig =  require('../app.json');
-    WEBSITE_HOST = appConfig.apps[0].env.WEBSITE_HOST || 'notebook.timeface.cn';
+    WEBSITE_HOST = appConfig.apps[0].env.WEBSITE_HOST || '';
 }catch(err){
     console.log('读取app.json异常');
 }

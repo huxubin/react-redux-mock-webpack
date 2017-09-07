@@ -1,7 +1,7 @@
 /**
  * 文件说明: 路径拦截器
  * 详细描述: 添加接口请求baseUrl
- * 创建者: hxb
+ * 创建者: huxb
  * 创建时间: 2016/8/25
  * 变更记录:
  */
@@ -11,7 +11,7 @@ let Cookies = require('cookies-js');
 export default {
     request: (config) => {
 
-        //获取token和uid,调试模式下获取测试帐号
+        // 获取token和uid,调试模式下获取测试帐号
         if (!config.headers) {
             config.headers = {};
         }
