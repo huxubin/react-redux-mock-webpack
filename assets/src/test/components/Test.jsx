@@ -26,10 +26,9 @@ class Test extends React.Component {
 
         return (
             <div>
-                <Button type="primary">Primary</Button>
-                <Button>Default</Button>
-                <Button type="dashed">Dashed</Button>
-
+                {/*<Button type="primary">Primary</Button>*/}
+                {/*<Button>Default</Button>*/}
+                {/*<Button type="dashed">Dashed</Button>*/}
                 {this.getTestData()}
             </div>
         );
