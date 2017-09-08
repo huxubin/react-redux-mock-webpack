@@ -15,7 +15,7 @@ var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 var WEBSITE_HOST = '';
 try{
-    var appConfig =  require('../app.json');
+    var appConfig = require('../app.json');
     WEBSITE_HOST = appConfig.apps[0].env.WEBSITE_HOST || '';
 }catch(err){
     console.log('读取app.json异常');
