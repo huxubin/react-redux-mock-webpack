@@ -30,6 +30,7 @@ class Test extends React.Component {
         this.actions.testAction();
     }
 
+
     getTestData(){
         let testStore = this.props.testStore||{};
         let testData = testStore.datas||[];
