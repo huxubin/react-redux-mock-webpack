@@ -2,7 +2,7 @@
  * 文件说明: 测试jsx
  * 详细描述:
  * 创建者: huxb
- * 创建时间: 2016/8/25
+ * 创建时间: 2017/09/05
  * 变更记录:
  */
 import React, { PropTypes } from 'react';
@@ -35,6 +35,7 @@ class Test extends React.Component {
     componentDidMount(){
         this.actions.testAction();
     }
+
 
     getTestData(){
         let testStore = this.props.testStore||{};
