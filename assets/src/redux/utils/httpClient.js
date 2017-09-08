@@ -2,7 +2,7 @@
  * 文件说明:httpClient
  * 详细描述:接口请求客户端
  * 创建者: huxb
- * 创建时间: 2016/8/25
+ * 创建时间: 2017/09/05
  * 变更记录:
  */
 import request from 'superagent';

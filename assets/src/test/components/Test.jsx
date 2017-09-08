@@ -2,15 +2,17 @@
  * 文件说明: 测试jsx
  * 详细描述:
  * 创建者: huxb
- * 创建时间: 2016/8/25
+ * 创建时间: 2017/09/05
  * 变更记录:
  */
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
+import {Button} from 'antd';
 
 import * as testAction from '../../redux/actions/testAction.js';
 import './../style/test.less';
+import 'antd/dist/antd.less';
 
 class Test extends React.Component {
     constructor(props) {
@@ -18,10 +20,16 @@ class Test extends React.Component {
         this.actions = bindActionCreators(Object.assign({},testAction), props.dispatch);
     }
 
+
+
     render(){
-        console.log(this.props.testStore,'11111111111111');
+
         return (
             <div>
+                <Button type="primary">Primary</Button>
+                <Button>Default</Button>
+                <Button type="dashed">Dashed</Button>
+
                 {this.getTestData()}
             </div>
         );
