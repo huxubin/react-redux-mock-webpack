@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+var FileStreamRotator = require('file-stream-rotator');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -11,6 +12,20 @@ const extendRender = require('./utils/extendRender');
 const config = require('./config');
 const app = express();
 
+// log
+var logDirectory = __dirname + '/logs';
+
+// ensure log directory exists
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+
+// create a rotating write stream
+var accessLogStream = FileStreamRotator.getStream({
+    filename: logDirectory + '/access-%DATE%.log',
+    frequency: 'daily',
+    verbose: false
+});
+app.use(logger('combined', {stream: accessLogStream}));
+
 // 设置调试模式
 app.set('debug', app.get('env') === 'development');
 
@@ -19,7 +34,7 @@ app.locals.initialState = {};
 app.locals.assets = {};
 app.locals.body = '';
 
-//设置默认的TDK
+// 设置默认的TDK
 app.locals.title = config.TDK.title;
 
 // 全局常量
@@ -47,8 +62,7 @@ if (app.get('debug')) {
         pathRewrite: proxyConfig.pathRewrite
     };
 
-    if(config.NODE_ENV_MOCK){
-        // 开启mock数据
+    if(config.NODE_ENV_MOCK){  //开启mock数据
         app.use(require('./middleware/mockMiddleware'));
     }
 
@@ -81,16 +95,14 @@ app.use((req, res, next) => {
 });
 
 // 开发环境，500错误处理和错误堆栈跟踪
-if (app.get('env') === 'development') {
-    app.use((err, req, res, next) => {
-        res.status(err.status || 500).send(err.toString());
-    });
-}
+// if (app.get('env') === 'development') {
+//     app.use((err, req, res, next) => {
+//         res.status(err.status || 500).send(err.toString());
+//     });
+// }
 
-// 生产环境，500错误处理
-app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.send(err.toString());
+app.use((err,req,res,next) => {
+    res.status(err.status || 500).send(err.toString());
 });
 
 // 启动express服务

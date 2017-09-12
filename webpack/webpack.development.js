@@ -8,7 +8,7 @@
 require('babel-core/register');
 var webpack = require('webpack');
 var path = require('path');
-var fs = require('fs'); // 存放内存
+var fs = require('fs');
 var url = require('url');
 
 var assetsPath = path.resolve(__dirname,'../assets/dist');
@@ -48,9 +48,6 @@ var babelLoaderQuery = Object.assign({}, babelrcObjectDevelopment, babelrcObject
 });
 delete babelLoaderQuery.env;
 
-// Since we use .babelrc for client and server, and we don't want HMR enabled on the server, we have to add
-// the babel plugin react-transform-hmr manually here.
-
 // make sure react-transform is enabled
 babelLoaderQuery.plugins = babelLoaderQuery.plugins || [];
 var reactTransform = null;
@@ -60,14 +57,12 @@ for (var i = 0; i < babelLoaderQuery.plugins.length; ++i) {
         reactTransform = plugin;
     }
 }
-
 if (!reactTransform) {
     reactTransform = ['react-transform', {
         transforms: []
     }];
     babelLoaderQuery.plugins.push(reactTransform);
 }
-
 if (!reactTransform[1] || !reactTransform[1].transforms) {
     reactTransform[1] = Object.assign({}, reactTransform[1], {
         transforms: []
@@ -83,7 +78,7 @@ reactTransform[1].transforms.push({
 
 var config = {
     debug: true,
-    devtool: 'eval-source-map',
+    devtool: 'eval-source-map', // 配置生成Source Maps,选择合适的选项
     context: path.resolve(__dirname, '..'),
     entry: {
         commons: [
@@ -163,7 +158,7 @@ var config = {
             __CLIENT__: true,
             __SERVER__: false,
             __DEVELOPMENT__: true,
-            __DEVTOOLS__: true,  // <-------- DISABLE redux-devtools HERE
+            __DEVTOOLS__: true,
             WEBSITE_HOST: JSON.stringify(WEBSITE_HOST)
         }),
         new webpack.HotModuleReplacementPlugin(),
