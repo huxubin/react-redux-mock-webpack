@@ -108,9 +108,11 @@ app.use((err,req,res,next) => {
 // 启动express服务
 let PORT = parseInt(process.env.PORT || 9099);
 try {
-    app.listen(PORT, () => {
-        console.log('启动服务. 端口号:',PORT);
-    });
+    //if (module.parent) {
+        app.listen(PORT,()=>{
+            console.log('启动服务端口号:',PORT);
+        });
+    //}
 }catch(err){
     console.log('启动错误：',err);
 }
